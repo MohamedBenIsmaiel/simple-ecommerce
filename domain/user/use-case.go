@@ -58,7 +58,7 @@ func(user *User)Login() *handlError.HandleError{
 	userCollection.FindOne(ctx, bson.M{"email": *user.Email}).Decode(&foundUser)
 	defer cancel()
 
-	if foundUser.Email == nil{
+	if  foundUser ==  nil || foundUser.Email == nil{
 		err := handlError.BadRequest("User Email or Password doesn't match !")
 		return err
 	}
